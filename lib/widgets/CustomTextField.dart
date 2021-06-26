@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 
 
@@ -6,14 +7,19 @@ class CustomTextField extends StatelessWidget {
 
   CustomTextField({required this.labelName, required this.hintTextName,
     required this.onChangedFunction,
+    this.errorText,
+    this.limit,
+    this.validateFunction,
     required this.textInputType, this.onPressed, this.icon, this.obscureTextTy= false});
 
   final String labelName;
   final String hintTextName;
+  final String? errorText;
   final TextInputType textInputType;
 
   final ValueChanged  onChangedFunction;
-
+  final FormFieldValidator<String>? validateFunction;
+final int? limit;
   final Function()? onPressed;
   final IconData? icon;
   final bool obscureTextTy;
@@ -29,8 +35,10 @@ class CustomTextField extends StatelessWidget {
           keyboardType: textInputType,
           // autofocus: true,
           decoration: InputDecoration(
-            hintStyle: TextStyle(color: Colors.red, fontSize: 20),
+            errorText: errorText,
+            hintStyle: TextStyle(color: Colors.red, fontSize: 17),
             hintText: hintTextName,
+
             enabledBorder: UnderlineInputBorder(
               borderSide: BorderSide(color: Colors.grey),
             ),
@@ -48,7 +56,10 @@ class CustomTextField extends StatelessWidget {
           ),
           onChanged: onChangedFunction,
           obscureText: obscureTextTy,
-
+          validator: validateFunction,
+            inputFormatters: [
+              LengthLimitingTextInputFormatter(limit),
+            ]
 
         ),
       ],

@@ -11,58 +11,58 @@ class UserDrawer extends StatelessWidget {
     return Drawer(
       child: Column(
         children: [
-          // Container(
-          //   height: 280,
-          //   child: DrawerHeader(
-          //     // decoration: BoxDecoration(
-          //     //   color: Colors.blue,
-          //     // ),
-          //     child: Column(
-          //       //shrinkWrap: true,
-          //       //physics: NeverScrollableScrollPhysics(),
-          //       // mainAxisAlignment: MainAxisAlignment.start,
-          //       // crossAxisAlignment: CrossAxisAlignment.start,
-          //       children: [
-          //         Row(
-          //           mainAxisAlignment: MainAxisAlignment.end,
-          //           children: [
-          //             GestureDetector(
-          //               onTap: () {
-          //                 Navigator.of(context).pop();
-          //               },
-          //               child: Icon(CupertinoIcons.clear),
-          //             )
-          //           ],
-          //         ),
-          //         Column(
-          //           mainAxisAlignment: MainAxisAlignment.spaceAround,
-          //           children: [
-          //             CircleAvatar(
-          //               radius: 60,
-          //               //   backgroundColor: Colors.transparent,
-          //               backgroundImage: AssetImage(
-          //                 'assets/images/child.jpg',
-          //                 // fit: BoxFit.contain,
-          //               ),
-          //               // child: Container(   width: 100,),
-          //             ),
-          //             SizedBox(
-          //               height: 10,
-          //             ),
-          //             Text("Samu Chakraborty", style: emailTextStyle),
-          //             SizedBox(
-          //               height: 10,
-          //             ),
-          //             Text(
-          //               "samuckb@gmail.com",
-          //               style: emailTextStyle,
-          //             )
-          //           ],
-          //         )
-          //       ],
-          //     ),
-          //   ),
-          // ),
+          Container(
+            height: 280,
+            child: DrawerHeader(
+              // decoration: BoxDecoration(
+              //   color: Colors.blue,
+              // ),
+              child: Column(
+                //shrinkWrap: true,
+                //physics: NeverScrollableScrollPhysics(),
+                // mainAxisAlignment: MainAxisAlignment.start,
+                // crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.of(context).pop();
+                        },
+                        child: Icon(CupertinoIcons.clear),
+                      )
+                    ],
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      CircleAvatar(
+                        radius: 60,
+                        //   backgroundColor: Colors.transparent,
+                        // backgroundImage: AssetImage(
+                        //   'assets/images/child.jpg',
+                        //   // fit: BoxFit.contain,
+                        // ),
+                         child: Icon(Icons.person, size: 40,),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Text("Samu Chakraborty", style: emailTextStyle),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        "samuckb@gmail.com",
+                        style: emailTextStyle,
+                      )
+                    ],
+                  )
+                ],
+              ),
+            ),
+          ),
           SizedBox(
             height: 30,
           ),

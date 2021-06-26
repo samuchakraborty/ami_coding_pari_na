@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../constants.dart';
@@ -13,16 +14,21 @@ class CustomButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: onPressed,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(icons, size: 30,),
-          SizedBox(width: 6,),
-          Text(
-            buttonName,
-            style: TextStyle(fontSize: 24, fontFamily: 'Poppins'),
-          ),
-        ],
+      // child: Row(
+      //   mainAxisAlignment: MainAxisAlignment.center,
+      //   crossAxisAlignment: CrossAxisAlignment.center,
+      //   children: [
+      //     Icon(icons, size: 30,),
+      //     //SizedBox(width: 6,),
+      //     Text(
+      //       buttonName,
+      //       style: TextStyle(fontSize: 24, fontFamily: 'Poppins'),
+      //     ),
+      //   ],
+      // ),
+      child:  Text(
+        buttonName,
+        style: TextStyle(fontSize: 24),
       ),
       style: buttonStyleContinue,
     );
