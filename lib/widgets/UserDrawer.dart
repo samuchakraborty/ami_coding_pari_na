@@ -6,6 +6,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class UserDrawer extends StatelessWidget {
+
+  final String? userName;
+  final String? userMobile;
+  UserDrawer({required this.userName, required this.userMobile});
+
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -49,12 +55,12 @@ class UserDrawer extends StatelessWidget {
                       SizedBox(
                         height: 10,
                       ),
-                      Text("Samu Chakraborty", style: emailTextStyle),
+                      Text(userName ?? ' ', style: emailTextStyle),
                       SizedBox(
                         height: 10,
                       ),
                       Text(
-                        "samuckb@gmail.com",
+                        userMobile ?? ' ',
                         style: emailTextStyle,
                       )
                     ],
