@@ -5,6 +5,7 @@ import 'package:ami_coding_pari_na/widgets/CustomButton.dart';
 import 'package:ami_coding_pari_na/widgets/CustomTextField.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../constants.dart';
 import 'LoginPage.dart';
@@ -125,6 +126,13 @@ class _SignUpState extends State<SignUp> {
                         .then((value) async {
                       if (value != null || value.isNotEmpty) {
                         print(value);
+
+                         SharedPreferences localStorage = await SharedPreferences.getInstance();
+                         localStorage.setString('token', value!.toString());
+                        var s = localStorage.getString('token');
+                        print('hhhhh');
+                        print(s);
+
                         FocusScope.of(context).requestFocus(FocusNode());
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(

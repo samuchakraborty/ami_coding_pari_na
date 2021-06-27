@@ -2,6 +2,7 @@ import 'package:ami_coding_pari_na/services/DataBaseHelper.dart';
 import 'package:ami_coding_pari_na/widgets/CustomButton.dart';
 import 'package:ami_coding_pari_na/widgets/CustomTextField.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../constants.dart';
 import 'DashBoard.dart';
@@ -99,6 +100,14 @@ class _LogInState extends State<LogIn> {
                           .then((value) async {
                         if (value != null) {
                           print(value.id);
+
+                          SharedPreferences localStorage = await SharedPreferences.getInstance();
+                          localStorage.setString('token', value.id.toString());
+
+
+
+
+
                           FocusScope.of(context).requestFocus(FocusNode());
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
