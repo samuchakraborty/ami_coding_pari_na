@@ -47,6 +47,7 @@ class _DashBoardState extends State<DashBoard> {
       drawer: UserDrawer(
         userMobile: mobile,
         userName: name,
+        userId: id
 
 
       ),

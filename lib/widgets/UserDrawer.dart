@@ -9,7 +9,11 @@ class UserDrawer extends StatelessWidget {
 
   final String? userName;
   final String? userMobile;
-  UserDrawer({required this.userName, required this.userMobile});
+  final String? userId;
+  UserDrawer({required this.userName, required this.userMobile,
+  required this.userId
+
+  });
 
 
   @override
@@ -80,7 +84,11 @@ class UserDrawer extends StatelessWidget {
             route: () {
               Navigator.of(context).push(
                 MaterialPageRoute(
-                  builder: (_) => KhojTheSearch(),
+                  builder: (_) => KhojTheSearch(
+                    userId: userId,
+
+
+                  ),
                 ),
               );
             },

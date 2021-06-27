@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:io' as io;
 
+import 'package:ami_coding_pari_na/models/StoreData.dart';
 import 'package:ami_coding_pari_na/models/UserModel.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
@@ -13,8 +14,19 @@ class DBHelper {
   static const String USER_PASSWORD = 'password';
   static const String USER_MOBILE = 'mobile';
 
+  //for user LOGIN AND REGISTRATION
   static const String USER_TABLE = 'user';
   static const String USER_DB_NAME = 'user.db';
+
+ //STORE DATA
+  static const String USER_STORE_TABLE = 'storeData';
+  static const String STORE_ID = 'id';
+  static const String USER_STORE_TIMESTAMP = 'timestamp';
+  static const String USER_STORE_VALUE = 'storeValue';
+  static const String USER_SEARCH_BY_VALUE= 'searchByValue';
+
+
+
 
   Future<Database> get db async {
     // if (_db != null) {
@@ -34,7 +46,76 @@ class DBHelper {
   _onCreate(Database db, int version) async {
     await db.execute(
         "CREATE TABLE $USER_TABLE ($ID INTEGER PRIMARY KEY autoincrement, $USER_NAME TEXT, $USER_MOBILE TEXT, $USER_PASSWORD TEXT)");
+
+    await db.execute(
+        "CREATE TABLE $USER_STORE_TABLE ($STORE_ID INTEGER, $USER_STORE_VALUE TEXT, $USER_SEARCH_BY_VALUE TEXT, $USER_STORE_TIMESTAMP TEXT)");
+
+
   }
+
+  Future storeData(StoreData user) async {
+    var dbClient = await db;
+    int id = await dbClient.insert(USER_STORE_TABLE, user.toStore());
+    print(id);
+    return id;
+    //var query;
+    // await dbClient.transaction((txn) async {
+    //   var query =
+    //       "INSERT INTO $USER_TABLE ($USER_NAME, $USER_MOBILE, $USER_PASSWORD) VALUES ('" +
+    //           userName +
+    //           "', '" +
+    //           mobile +
+    //           "', '" +
+    //           password +
+    //           "')";
+    //   print(query);
+    //   int lastId = await txn.rawInsert(query);
+    //   print(lastId);
+    //
+    //   return lastId;
+    // });
+  }
+
+  Future<List<StoreData>?> getAllStoreDataById({id}) async {
+    var dbClient = await db;
+    // List<Map<String, dynamic>> mapss = await dbClient.query(USER_STORE_TABLE,
+    //     columns: [STORE_ID, USER_STORE_VALUE, USER_SEARCH_BY_VALUE, USER_STORE_TIMESTAMP]);
+    //List<Map> maps = await dbClient.rawQuery("SELECT * FROM $TABLE");
+    // List user = [];
+    // if (mapss.length > 0) {
+    //   for (int i = 0; i < mapss.length; i++) {
+    //     //user.add(User(mapss![i]));
+    //     print(mapss[i]);
+    //   }
+    // }
+
+    var result =
+    await dbClient.query(USER_STORE_TABLE, where: "id=?", whereArgs: [id]);
+   // return User.fromMap(result.first);
+    print(result);
+
+  //  StoreData.fromMap(result);
+    List<StoreData>? list =
+    result.isNotEmpty ? result.map((c) => StoreData.fromMap(c)).toList() : null;
+
+
+
+    return list;
+    // return List.generate(result.length, (i) {
+    //   return StoreData(
+    //       id: result[i]['id'],
+    //       timestamp: result[i]['timestamp'],
+    //       storeValue: result[i]['storeValue'],
+    //       searchByValue: result[i]['searchByValue']);
+    // });
+
+    // return user;
+  }
+
+
+
+
+
 
   Future save(User user) async {
     var dbClient = await db;
