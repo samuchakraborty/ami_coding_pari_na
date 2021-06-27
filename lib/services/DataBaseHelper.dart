@@ -24,6 +24,7 @@ class DBHelper {
   static const String USER_STORE_TIMESTAMP = 'timestamp';
   static const String USER_STORE_VALUE = 'storeValue';
   static const String USER_SEARCH_BY_VALUE= 'searchByValue';
+  static const String USER_SEARCH_RESULT= 'result';
 
 
 
@@ -48,7 +49,7 @@ class DBHelper {
         "CREATE TABLE $USER_TABLE ($ID INTEGER PRIMARY KEY autoincrement, $USER_NAME TEXT, $USER_MOBILE TEXT, $USER_PASSWORD TEXT)");
 
     await db.execute(
-        "CREATE TABLE $USER_STORE_TABLE ($STORE_ID INTEGER, $USER_STORE_VALUE TEXT, $USER_SEARCH_BY_VALUE TEXT, $USER_STORE_TIMESTAMP TEXT)");
+        "CREATE TABLE $USER_STORE_TABLE ($STORE_ID INTEGER, $USER_STORE_VALUE TEXT, $USER_SEARCH_BY_VALUE TEXT, $USER_STORE_TIMESTAMP TEXT, $USER_SEARCH_RESULT TEXT )");
 
 
   }

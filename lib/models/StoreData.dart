@@ -3,15 +3,22 @@ class StoreData {
   String? storeValue;
   String? searchByValue;
   String? timestamp;
+  String? result;
 
-  StoreData({this.id, this.storeValue, this.searchByValue, this.timestamp});
+  StoreData(
+      {this.id,
+      this.storeValue,
+      this.searchByValue,
+      this.timestamp,
+      this.result});
 
   Map<String, dynamic> toStore() {
     var map = <String, dynamic>{
       'id': id,
       'timestamp': timestamp,
       'storeValue': storeValue,
-      'searchByValue': searchByValue
+      'searchByValue': searchByValue,
+      'result': result
     };
 
     return map;
@@ -22,5 +29,6 @@ class StoreData {
     timestamp = map['timestamp'];
     storeValue = map['storeValue'];
     searchByValue = map['searchByValue'];
+    result = map['result'];
   }
 }

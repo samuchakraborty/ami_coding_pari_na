@@ -28,21 +28,8 @@ class _KhojTheSearchState extends State<KhojTheSearch> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    // DBHelper().storeData(StoreData(
-    //     id: int.parse(widget.userId),
-    //     timestamp: DateTime.now().toString(),
-    //     searchByValue: '3',
-    //     storeValue: '2,2,3,4,5,55,5'));
-
     refreshList();
   }
-
-  // getData() {
-  //   var i = DBHelper().getAllStoreDataById(id: widget.userId).then((value) {
-  //     print('jjj');
-  //     //print(value[0].id);
-  //   });
-  // }
 
   refreshList() {
     setState(() {
@@ -57,59 +44,90 @@ class _KhojTheSearchState extends State<KhojTheSearch> {
         // scrollDirection: Axis.vertical,
         // child:
         //
-        Container(
-      width: MediaQuery.of(context).size.width,
-      margin: EdgeInsets.only(left: 10, right: 10),
-      child: DataTable(
-        columns: [
-          DataColumn(
-            label: Text('id'),
-          ),
-          DataColumn(
-            label: Text('Input'),
-          ),
-          DataColumn(
-            label: Text('SearchBy'),
-          ),
-          DataColumn(
-            label: Text('Timestamp'),
-          )
-        ],
-        rows: storeData.reversed
-            .map(
-              (element) => DataRow(cells: [
-                DataCell(
-                  Text(
-                    element.id.toString(),
-                  ),
-                ),
-                DataCell(
-                  Container(
-                    width: MediaQuery.of(context).size.width / 4,
-                    child: Text(
-                      element.storeValue.toString(),
-                      maxLines: 5,
+    //     Container(
+    //   width: MediaQuery.of(context).size.width,
+    // //  margin: EdgeInsets.only(left: 10, right: 20),
+    //   child:
+
+      ConstrainedBox(
+        
+        constraints:  BoxConstraints(minWidth: MediaQuery.of(context).size.width ),
+        child: DataTable(
+          columns: [
+            DataColumn(
+              label: Container(
+                   child: Text('id')),
+            ),
+            DataColumn(
+              label: Container(
+                //  width: MediaQuery.of(context).size.width / 14,
+                  child: Text('Input')),
+            ),
+            DataColumn(
+              label: Container(
+
+                  child: Text('SearchBy')),
+            ),
+            DataColumn(
+              label: Text('Result'),
+            ),
+            DataColumn(
+              label: Text('Timestamp'),
+            )
+          ],
+          rows: storeData.reversed
+              .map(
+                (element) => DataRow(cells: [
+                  DataCell(
+                    Container(
+                       child: Text(
+                        element.id.toString(),
+                      ),
                     ),
                   ),
-                ),
-                DataCell(
-                  Text(
-                    element.searchByValue.toString(),
+                  DataCell(
+                    Container(
+
+                      child: Text(
+                        element.storeValue.toString(),
+                        maxLines: 5,
+                      ),
+                    ),
                   ),
-                ),
-                DataCell(
-                  Text(
-                    DateFormat("yyyy-MM-dd")
-                        .add_jm()
-                        .format(DateTime.parse(element.timestamp.toString()))
-                        .toString(),
+                  DataCell(
+                    Container(
+
+                      child: Text(
+                        element.searchByValue.toString(),
+                      ),
+                    ),
                   ),
-                ),
-              ]),
-            )
-            .toList(),
-      ),
-    );
+                  DataCell(
+                    Container(
+
+                      child: Text(
+                        element.result.toString(),
+                      ),
+                    ),
+                  ),
+                  DataCell(
+                    Container(
+
+                      child: Text(
+                        DateFormat("yyyy-MM-dd")
+                            .add_jm()
+                            .format(DateTime.parse(element.timestamp.toString()))
+                            .toString(),
+                        //maxLines: 5,
+                      ),
+                    ),
+                  ),
+                ]),
+              )
+              .toList(),
+        ),
+      );
+  //  );
     //,
     // );
   }
@@ -252,11 +270,15 @@ class _KhojTheSearchState extends State<KhojTheSearch> {
       // print('True');
       // print(dataListAsInt.join(','));
 
-      await DBHelper().storeData(StoreData(
+      await DBHelper().storeData(
+        StoreData(
           id: int.parse(widget.userId),
           timestamp: DateTime.now().toString(),
           searchByValue: searchValue.toString(),
-          storeValue: dataListAsInt.join(',').toString()));
+          storeValue: dataListAsInt.join(',').toString(),
+          result: "True",
+        ),
+      );
 
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
@@ -266,11 +288,16 @@ class _KhojTheSearchState extends State<KhojTheSearch> {
       );
     } else {
       print('False');
-      await DBHelper().storeData(StoreData(
+      await DBHelper().storeData(
+        StoreData(
           id: int.parse(widget.userId),
           timestamp: DateTime.now().toString(),
           searchByValue: searchValue.toString(),
-          storeValue: dataListAsInt.join(',').toString()));
+
+          storeValue: dataListAsInt.join(',').toString(),
+          result: "False",
+        ),
+      );
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text("The search value is not matched"),
