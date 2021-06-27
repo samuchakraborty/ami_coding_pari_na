@@ -101,7 +101,7 @@ class UserDrawer extends StatelessWidget {
           ),
           CustomDrawerItem(
             isOptional: false,
-            icon: CupertinoIcons.flag,
+            icon: Icons.image_outlined,
             iconsOptional: Icons.arrow_forward_ios_sharp,
             labelText: 'Dekhao Chobi',
             route: (){
