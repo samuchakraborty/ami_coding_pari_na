@@ -51,36 +51,40 @@ class DekhaoChobi extends StatelessWidget {
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20.0),
                         ),
-                        child: Container(
-                          //height: 200,
-                          // margin: EdgeInsets.only(left: 2, right: 2),
-                          decoration: BoxDecoration(
-                            border: Border.all(color: Colors.green),
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(20),
-                              topRight: Radius.circular(20),
-                              bottomRight: Radius.circular(20),
-                              bottomLeft: Radius.circular(20),
-                            ),
-                          ),
-                          child: Column(
-                            children: [
-                              SizedBox(height: 10,),
-                              Text("Image ${index+1}"),
-                              SizedBox(height: 10,),
-                              Expanded(
-                                child: Container(
-                                  margin: EdgeInsets.only(left: 2, right: 2),
-                                //  padding: EdgeInsets.all(10),
-                                  child: Image.network(
-                                    snapshot.data[index]['url'],
+                        child: ConstrainedBox(
+                          constraints:  BoxConstraints(minHeight: 200 ),
 
+                          child: Container(
+                            //height: 200,
+                            // margin: EdgeInsets.only(left: 2, right: 2),
+                            decoration: BoxDecoration(
+                              border: Border.all(color: Colors.green),
+                              borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(20),
+                                topRight: Radius.circular(20),
+                                bottomRight: Radius.circular(20),
+                                bottomLeft: Radius.circular(20),
+                              ),
+                            ),
+                            child: Column(
+                              children: [
+                                SizedBox(height: 10,),
+                                Text("Image ${index+1}"),
+                                SizedBox(height: 10,),
+                                Expanded(
+                                  child: Container(
+                                    margin: EdgeInsets.only(left: 2, right: 2),
+                                  //  padding: EdgeInsets.all(10),
+                                    child: Image.network(
+                                      snapshot.data[index]['url'],
+
+                                    ),
                                   ),
                                 ),
-                              ),
-                              SizedBox(height: 20,),
+                                SizedBox(height: 20,),
 
-                            ],
+                              ],
+                            ),
                           ),
                         ),
                       );
