@@ -38,95 +38,104 @@ class _KhojTheSearchState extends State<KhojTheSearch> {
   }
 
   Widget dataTable(List<StoreData> storeData) {
+    var kMinWidthOfLargeScreen =MediaQuery.of(context).size.width-10;
+    bool isScreenWide = MediaQuery.of(context).size.width >= kMinWidthOfLargeScreen;
     return
         // SingleChildScrollView(
         // physics: NeverScrollableScrollPhysics(),
         // scrollDirection: Axis.vertical,
         // child:
         //
-    //     Container(
-    //   width: MediaQuery.of(context).size.width,
-    // //  margin: EdgeInsets.only(left: 10, right: 20),
-    //   child:
+      FittedBox(
+     // width: MediaQuery.of(context).size.width,
+      //margin: EdgeInsets.only(left: 10, right: 20),
+      child:
+        ConstrainedBox(
 
-      ConstrainedBox(
-        
-        constraints:  BoxConstraints(minWidth: MediaQuery.of(context).size.width ),
-        child: DataTable(
-          columns: [
-            DataColumn(
-              label: Container(
-                   child: Text('id')),
-            ),
-            DataColumn(
-              label: Container(
-                //  width: MediaQuery.of(context).size.width / 14,
-                  child: Text('Input')),
-            ),
-            DataColumn(
-              label: Container(
+          constraints:  BoxConstraints(minWidth: MediaQuery.of(context).size.width -10),
+          child: DataTable(
+            columns: [
+              DataColumn(
+                label: Container(
+                     child: Text('id')),
+              ),
+              DataColumn(
+                label: Container(
+                  //  width: MediaQuery.of(context).size.width / 14,
+                    child: Text('Input')),
+              ),
+              DataColumn(
+                label: Container(
 
-                  child: Text('SearchBy')),
-            ),
-            DataColumn(
-              label: Text('Result'),
-            ),
-            DataColumn(
-              label: Text('Timestamp'),
-            )
-          ],
-          rows: storeData.reversed
-              .map(
-                (element) => DataRow(cells: [
-                  DataCell(
-                    Container(
-                       child: Text(
-                        element.id.toString(),
+                    child: Text('SearchBy')),
+              ),
+              DataColumn(
+                label: Container(child: Text('Timestamp')),
+              ),
+              DataColumn(
+                label: Container(
+                    //width:,
+                    child: Text('Result'),
+
+                ),
+              ),
+
+            ],
+            rows: storeData.reversed
+                .map(
+                  (element) => DataRow(cells: [
+                    DataCell(
+                      Container(
+                         child: Text(
+                          element.id.toString(),
+                        ),
                       ),
                     ),
-                  ),
-                  DataCell(
-                    Container(
+                    DataCell(
+                      Container(
 
-                      child: Text(
-                        element.storeValue.toString(),
-                        maxLines: 5,
+                        child: Text(
+                          element.storeValue.toString(),
+                          maxLines: 5,
+                        ),
                       ),
                     ),
-                  ),
-                  DataCell(
-                    Container(
+                    DataCell(
+                      Container(
 
-                      child: Text(
-                        element.searchByValue.toString(),
+                        child: Text(
+                          element.searchByValue.toString(),
+                        ),
                       ),
                     ),
-                  ),
-                  DataCell(
-                    Container(
 
-                      child: Text(
-                        element.result.toString(),
+                    DataCell(
+                      Container(
+
+                        child: Text(
+                          DateFormat("yyyy-MM-dd")
+                              .add_jm()
+                              .format(DateTime.parse(element.timestamp.toString()))
+                              .toString(),
+                          //maxLines: 5,
+                        ),
                       ),
                     ),
-                  ),
-                  DataCell(
-                    Container(
 
-                      child: Text(
-                        DateFormat("yyyy-MM-dd")
-                            .add_jm()
-                            .format(DateTime.parse(element.timestamp.toString()))
-                            .toString(),
-                        //maxLines: 5,
+                    DataCell(
+                      Container(
+                        child: Text(
+                          element.result.toString(),
+                        ),
                       ),
                     ),
-                  ),
-                ]),
-              )
-              .toList(),
-        ),
-      );
+                  ]),
+                )
+                .toList(),
+          ),
+        ),)
+
+      ;
   //  );
     //,
     // );
