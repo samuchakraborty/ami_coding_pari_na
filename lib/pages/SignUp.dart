@@ -117,31 +117,22 @@ class _SignUpState extends State<SignUp> {
                 buttonName: 'SIGN UP',
                 onPressed: () async {
                   if (_formKey.currentState!.validate()) {
-//                     // print(mobile);
-//                     // print(password);
-//                     // print(userName);
-//                     Map<String, dynamic> data = {
-//                       'mobile': mobile,
-//                       'password': password,
-//                       'userName': userName
-//                     };
-// //print(data);
-// //                     var lastId = await DBHelper().save(
-// //                         userName: userName, mobile: mobile, password: password);
-//                     //    print((rawid));
-//                     //await DBHelper().getEmployees();
                     await DBHelper()
                         .save(User(
                             userName: userName,
-                            mobile: int.parse(mobile),
+                            mobile: (mobile),
                             password: password))
                         .then((value) async {
-//setState(() {
-
                       if (value != null || value.isNotEmpty) {
                         print(value);
-
-await                        Navigator.push(
+                        FocusScope.of(context).requestFocus(FocusNode());
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text("${userName} is successfully register"),
+                            backgroundColor: Colors.green,
+                          ),
+                        );
+                        await Navigator.push(
                           context,
                           MaterialPageRoute(
                             builder: (context) => DashBoard(
@@ -150,8 +141,6 @@ await                        Navigator.push(
                           ),
                         );
                       }
-
-//});
                     });
                   }
                 },

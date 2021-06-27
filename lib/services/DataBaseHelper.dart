@@ -33,13 +33,13 @@ class DBHelper {
 
   _onCreate(Database db, int version) async {
     await db.execute(
-        "CREATE TABLE $USER_TABLE ($ID INTEGER PRIMARY KEY autoincrement, $USER_NAME TEXT, $USER_MOBILE NUMBER, $USER_PASSWORD TEXT)");
+        "CREATE TABLE $USER_TABLE ($ID INTEGER PRIMARY KEY autoincrement, $USER_NAME TEXT, $USER_MOBILE TEXT, $USER_PASSWORD TEXT)");
   }
 
   Future save(User user) async {
     var dbClient = await db;
     int id = await dbClient.insert(USER_TABLE, user.toUser());
-     print(id);
+    print(id);
     return id;
     //var query;
     // await dbClient.transaction((txn) async {
@@ -73,15 +73,13 @@ class DBHelper {
     // }
     return List.generate(mapss.length, (i) {
       return User(
-        id: mapss[i]['id'],
-        userName: mapss[i]['userName'],
-        password: mapss[i]['password'],
-        mobile: mapss[i]['mobile']
-      );
+          id: mapss[i]['id'],
+          userName: mapss[i]['userName'],
+          password: mapss[i]['password'],
+          mobile: mapss[i]['mobile']);
     });
 
-
-   // return user;
+    // return user;
   }
 
   //
@@ -98,19 +96,25 @@ class DBHelper {
     //   }
     // }
 
-    var result = await dbClient.query(USER_TABLE, where: "id=?", whereArgs: [lastId]);
-    return User.fromMap(result.first) ;
+    var result =
+        await dbClient.query(USER_TABLE, where: "id=?", whereArgs: [lastId]);
+    return User.fromMap(result.first);
 
     //return user;
   }
 
+  Future<User?> loginUser({required mobile, required password}) async {
+    var dbClient = await db;
 
+    var result = await dbClient.rawQuery(
+        "SELECT * FROM $USER_TABLE WHERE mobile = '$mobile' and password = '$password'");
 
+    //var result = await dbClient.query(USER_TABLE, where: "id=?", whereArgs: [lastId]);
+    print(result);
+    return result.length != 0 ? User.fromMap(result.first) : null;
 
-
-
-
-
+    //return user;
+  }
 
   // Future<int> delete(int id) async {
   //   var dbClient = await db;

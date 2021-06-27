@@ -77,18 +77,7 @@ class _KhojTheSearchState extends State<KhojTheSearch> {
                     return 'Please Enter Your Search value';
                   }
                 },
-                //limit: 1,
 
-                // icon: _secureText
-                //     ? Icons.visibility_off_outlined
-                //     : Icons.remove_red_eye_outlined,
-                // onPressed: () {
-                //   setState(() {
-                //     // _secureText = !_secureText;
-                //
-                //     searchValue
-                //   });
-                // },
               ),
               SizedBox(
                 height: 40,
@@ -113,27 +102,7 @@ class _KhojTheSearchState extends State<KhojTheSearch> {
                 ),
               ),
 
-              // SizedBox(height: 40,),
-              //
-              // Expanded(
-              //   child: Align(
-              //     alignment: FractionalOffset.bottomCenter,
-              //     child: GestureDetector(
-              //       onTap: (){
-              //         Navigator.pop(context);
-              //
-              //       },
-              //       child: Row(
-              //         mainAxisAlignment: MainAxisAlignment.center,
-              //         children: [
-              //           Text("Don't have an account? ", style: TextStyle(fontSize: 17, fontFamily: 'Poppins'),),
-              //           Text("Sign up ", style: TextStyle(fontSize: 17, color: Colors.red, fontFamily: 'Poppins'),),
-              //
-              //         ],
-              //       ),
-              //     ),
-              //   ),
-              // ),
+
               SizedBox(
                 height: 30,
               ),
@@ -142,27 +111,7 @@ class _KhojTheSearchState extends State<KhojTheSearch> {
         ),
       ),
 
-      // body: FutureBuilder(
-      //   future: NetWork().getChobi(),
-      //   builder: (BuildContext ctx, AsyncSnapshot snapshot) {
-      //     if (snapshot.data == null) {
-      //       return Center(
-      //         child: CupertinoActivityIndicator(
-      //           radius: 30,
-      //         ),
-      //       );
-      //     } else {
-      //       return GridView.builder(
-      //           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-      //             crossAxisCount: 3,
-      //           ),
-      //           itemCount: 100,
-      //           itemBuilder: (ctx, index) {
-      //             return Image.network(snapshot.data[index]['thumbnailUrl']);
-      //           });
-      //     }
-      //   },
-      // ),
+
     );
   }
 
@@ -184,14 +133,7 @@ class _KhojTheSearchState extends State<KhojTheSearch> {
     var s = dataListAsInt.contains(value);
     if (s) {
       print('True');
-      // return Fluttertoast.showToast(
-      //     msg: "The search value is matched",
-      //     toastLength: Toast.LENGTH_SHORT,
-      //     gravity: ToastGravity.CENTER,
-      //     timeInSecForIosWeb: 1,
-      //     backgroundColor: Colors.green,
-      //     textColor: Colors.white,
-      //     fontSize: 16.0);
+
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text("The search value is matched"),

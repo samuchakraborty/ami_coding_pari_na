@@ -1,6 +1,6 @@
 class User {
   int? id;
-  int? mobile;
+  String? mobile;
   String? userName;
   String? password;
 
