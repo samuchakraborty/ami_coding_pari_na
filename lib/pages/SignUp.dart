@@ -140,7 +140,7 @@ class _SignUpState extends State<SignUp> {
                             backgroundColor: Colors.green,
                           ),
                         );
-                        await Navigator.push(
+                        await Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
                             builder: (context) => DashBoard(

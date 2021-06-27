@@ -115,7 +115,9 @@ class _LogInState extends State<LogIn> {
                               backgroundColor: Colors.green,
                             ),
                           );
-                          await Navigator.push(
+
+                        Navigator.pop(context);
+                          await Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
                               builder: (context) => DashBoard(

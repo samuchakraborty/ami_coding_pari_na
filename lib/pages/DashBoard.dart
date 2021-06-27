@@ -24,7 +24,7 @@ class _DashBoardState extends State<DashBoard> {
     super.initState();
     print("last id get");
     print(widget.lastId.runtimeType);
-    // getData();
+     getData();
   }
 
   getData() async {
@@ -42,7 +42,7 @@ class _DashBoardState extends State<DashBoard> {
 
   @override
   Widget build(BuildContext context) {
-    getData();
+   // getData();
     return Scaffold(
       drawer: UserDrawer(
         userMobile: mobile,

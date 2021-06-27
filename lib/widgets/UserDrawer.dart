@@ -2,6 +2,7 @@ import 'package:ami_coding_pari_na/constants.dart';
 import 'package:ami_coding_pari_na/pages/Dekhao%20Chobi/DekhaoChobi.dart';
 import 'package:ami_coding_pari_na/pages/HomeScreen.dart';
 import 'package:ami_coding_pari_na/pages/KhojTheSearch/khojTheSearch.dart';
+import 'package:ami_coding_pari_na/pages/SignUp.dart';
 import 'package:ami_coding_pari_na/widgets/CustomDrawerItem.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -129,7 +130,7 @@ class UserDrawer extends StatelessWidget {
 
 
                       Navigator.pushReplacement(
-                          context, MaterialPageRoute(builder: (context) => Home()));
+                          context, MaterialPageRoute(builder: (context) => SignUp()));
 
 
                     },
