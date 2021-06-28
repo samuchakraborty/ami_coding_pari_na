@@ -98,7 +98,7 @@ class _SignUpState extends State<SignUp> {
                   ),
                   CustomTextField(
                     labelName: 'Mobile',
-                    hintTextName: '018888888',
+                    hintTextName: '01810000000',
                     textInputType: TextInputType.number,
                     onChangedFunction: (value) {
                       mobile = value;
@@ -108,6 +108,7 @@ class _SignUpState extends State<SignUp> {
                         return 'Please Enter Your Mobile Number';
                       }
                     },
+                    limit: 11,
                   ),
                   SizedBox(
                     height: 40,

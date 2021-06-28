@@ -20,7 +20,7 @@ class CustomDrawerItem extends StatelessWidget {
       child: Container(
         margin:
         isOptional == false ? EdgeInsets.only(left: 20, right: 10) : EdgeInsets.all(0),
-        padding: isOptional == false ? EdgeInsets.all(10) : EdgeInsets.all(0),
+        padding: isOptional == false ? EdgeInsets.all(8) : EdgeInsets.all(0),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           //  mainAxisAlignment: MainAxisAlignment.center,

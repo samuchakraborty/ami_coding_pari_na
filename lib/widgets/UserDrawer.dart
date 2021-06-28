@@ -18,11 +18,137 @@ class UserDrawer extends StatelessWidget {
 
   });
 
-
+Orientation? orientation ;
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      child: Column(
+      child:orientation == Orientation.landscape ?ListView(
+        shrinkWrap: true,
+        children: [
+          Container(
+            height: 100,
+            child: DrawerHeader(
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.of(context).pop();
+                        },
+                        child: Icon(CupertinoIcons.clear),
+                      )
+                    ],
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      CircleAvatar(
+                        radius: 60,
+                        child: Icon(Icons.person, size: 40,),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Text(userName ?? ' ', style: emailTextStyle),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        userMobile ?? ' ',
+                        style: emailTextStyle,
+                      )
+                    ],
+                  )
+                ],
+              ),
+            ),
+          ),
+          SizedBox(
+            height: 30,
+          ),
+          CustomDrawerItem(
+            isOptional: false,
+            iconsOptional: Icons.arrow_forward_ios_sharp,
+            icon: CupertinoIcons.search,
+            labelText: 'Khoj the search',
+            route: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (_) => KhojTheSearch(
+                    userId: userId,
+
+
+                  ),
+                ),
+              );
+            },
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          CustomDrawerItem(
+            isOptional: false,
+            icon: Icons.image_outlined,
+            iconsOptional: Icons.arrow_forward_ios_sharp,
+            labelText: 'Dekhao Chobi',
+            route: (){
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (_) => DekhaoChobi(),
+                ),
+              );
+            },
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          Expanded(
+            child: Align(
+                alignment: FractionalOffset.bottomCenter,
+                child: Container(
+                  margin: EdgeInsets.only(left: 40),
+                  padding: EdgeInsets.all(10),
+                  child: GestureDetector(
+                    onTap: () async {
+
+                      SharedPreferences localStorage = await SharedPreferences.getInstance();
+                      localStorage.remove('token');
+                      // print(localStorage.getString('token'));
+
+
+                      Navigator.pushReplacement(
+                          context, MaterialPageRoute(builder: (context) => SignUp()));
+
+
+                    },
+
+                    child: Row(
+                      children: [
+                        Icon(
+                          Icons.logout,
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Text(
+                          'Log Out',
+                          style: TextStyle(
+
+                              fontSize: 20,
+                              fontWeight: FontWeight.w500),
+                        ),
+                      ],
+                    ),
+                  ),
+                )),
+          ),
+          SizedBox(
+            height: 20,
+          ),
+        ],
+      ):Column(
         children: [
           Container(
             height: 280,
@@ -57,7 +183,7 @@ class UserDrawer extends StatelessWidget {
                         //   'assets/images/child.jpg',
                         //   // fit: BoxFit.contain,
                         // ),
-                         child: Icon(Icons.person, size: 40,),
+                        child: Icon(Icons.person, size: 40,),
                       ),
                       SizedBox(
                         height: 10,
@@ -159,7 +285,7 @@ class UserDrawer extends StatelessWidget {
             height: 20,
           ),
         ],
-      ),
+      ) ,
     );
   }
 }

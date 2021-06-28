@@ -220,9 +220,9 @@ class _KhojTheSearchState extends State<KhojTheSearch> {
                       height: 40,
                     ),
                     Container(
-                      //width: 100,
+                      width: 200,
                       alignment: Alignment.center,
-                      margin: EdgeInsets.only(left: 180, right: 100),
+                   //   margin: EdgeInsets.only(left: 180, right: 100),
                       //padding: EdgeInsets.only(left: 10),
                       child: CustomButton(
                         buttonName: 'Khoj ',

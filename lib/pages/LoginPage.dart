@@ -71,7 +71,7 @@ class _LogInState extends State<LogIn> {
                         ),
                         CustomTextField(
                           labelName: 'Mobile',
-                          hintTextName: '018888888',
+                          hintTextName: '01810000000',
                           textInputType: TextInputType.number,
                           onChangedFunction: (value) {
                             mobile = value;
@@ -81,6 +81,7 @@ class _LogInState extends State<LogIn> {
                               return 'Please Enter Your Mobile Number';
                             }
                           },
+                          limit: 11,
                         ),
                         SizedBox(
                           height: 40,
