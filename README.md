@@ -27,6 +27,12 @@ Clone this project and Run this command 'flutter run'.
 Or use this apk [ami_coding_pari_na.zip]([ami_coding_pari_na.zip](https://github.com/samuchakraborty/ami_coding_pari_na/files/6726784/ami_coding_pari_na.zip)
 )
 
+
+## FlowChart
+
+![project_flowchart](https://user-images.githubusercontent.com/61682653/123653485-ff777680-d84e-11eb-8ee1-860c1b02bc01.png)
+
+
 ## Demo
 
 
