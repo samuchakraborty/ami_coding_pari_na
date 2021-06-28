@@ -8,6 +8,7 @@ You're sections headers will be used to reference location of destination.
 
   - [Description](#description)
   - [How To Use](#how-to-use)
+  - [Flow Chart](#flow-chart)
   - [Demo](#demo)
   - [DataBase](#database)
   - [Khoj Function](#khoj-function)
@@ -28,9 +29,10 @@ Or use this apk [ami_coding_pari_na.zip]([ami_coding_pari_na.zip](https://github
 )
 
 
-## FlowChart
+## Flow Chart
 
-![project_flowchart](https://user-images.githubusercontent.com/61682653/123653485-ff777680-d84e-11eb-8ee1-860c1b02bc01.png)
+![project_flowchart](https://user-images.githubusercontent.com/61682653/123671019-a401b480-d85f-11eb-985c-c6d9311e34a0.png)
+
 
 
 ## Demo
