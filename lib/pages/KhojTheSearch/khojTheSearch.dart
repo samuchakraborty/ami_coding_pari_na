@@ -38,8 +38,8 @@ class _KhojTheSearchState extends State<KhojTheSearch> {
   }
 
   Widget dataTable(List<StoreData> storeData) {
-    var kMinWidthOfLargeScreen =MediaQuery.of(context).size.width-10;
-    bool isScreenWide = MediaQuery.of(context).size.width >= kMinWidthOfLargeScreen;
+    // var kMinWidthOfLargeScreen =MediaQuery.of(context).size.width-10;
+    // bool isScreenWide = MediaQuery.of(context).size.width >= kMinWidthOfLargeScreen;
     return
         // SingleChildScrollView(
         // physics: NeverScrollableScrollPhysics(),
