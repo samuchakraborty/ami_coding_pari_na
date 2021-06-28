@@ -46,97 +46,86 @@ class _KhojTheSearchState extends State<KhojTheSearch> {
         // scrollDirection: Axis.vertical,
         // child:
         //
-      FittedBox(
-     // width: MediaQuery.of(context).size.width,
+        FittedBox(
+      // width: MediaQuery.of(context).size.width,
       //margin: EdgeInsets.only(left: 10, right: 20),
-      child:
-        ConstrainedBox(
-
-          constraints:  BoxConstraints(minWidth: MediaQuery.of(context).size.width -10),
-          child: DataTable(
-            columns: [
-              DataColumn(
-                label: Container(
-                     child: Text('id')),
-              ),
-              DataColumn(
-                label: Container(
+      child: ConstrainedBox(
+        constraints:
+            BoxConstraints(minWidth: MediaQuery.of(context).size.width - 10),
+        child: DataTable(
+          columns: [
+            DataColumn(
+              label: Container(child: Text('id')),
+            ),
+            DataColumn(
+              label: Container(
                   //  width: MediaQuery.of(context).size.width / 14,
-                    child: Text('Input')),
+                  child: Text('Input')),
+            ),
+            DataColumn(
+              label: Container(child: Text('SearchBy')),
+            ),
+            DataColumn(
+              label: Container(child: Text('Timestamp')),
+            ),
+            DataColumn(
+              label: Container(
+                //width:,
+                child: Text('Result'),
               ),
-              DataColumn(
-                label: Container(
-
-                    child: Text('SearchBy')),
-              ),
-              DataColumn(
-                label: Container(child: Text('Timestamp')),
-              ),
-              DataColumn(
-                label: Container(
-                    //width:,
-                    child: Text('Result'),
-
-                ),
-              ),
-
-            ],
-            rows: storeData.reversed
-                .map(
-                  (element) => DataRow(cells: [
-                    DataCell(
-                      Container(
-                         child: Text(
-                          element.id.toString(),
-                        ),
+            ),
+          ],
+          rows: storeData.reversed
+              .map(
+                (element) => DataRow(cells: [
+                  DataCell(
+                    Container(
+                      child: Text(
+                        element.id.toString(),
                       ),
                     ),
-                    DataCell(
-                      Container(
-
-                        child: Text(
-                          element.storeValue.toString(),
-                          maxLines: 5,
-                        ),
+                  ),
+                  DataCell(
+                    Container(
+                      child: Text(
+                        element.storeValue.toString(),
+                        maxLines: 5,
                       ),
                     ),
-                    DataCell(
-                      Container(
-
-                        child: Text(
-                          element.searchByValue.toString(),
-                        ),
+                  ),
+                  DataCell(
+                    Container(
+                      child: Text(
+                        element.searchByValue.toString(),
                       ),
                     ),
-
-                    DataCell(
-                      Container(
-
-                        child: Text(
-                          DateFormat("yyyy-MM-dd")
-                              .add_jm()
-                              .format(DateTime.parse(element.timestamp.toString()))
-                              .toString(),
-                          //maxLines: 5,
-                        ),
+                  ),
+                  DataCell(
+                    Container(
+                      child: Text(
+                        DateFormat("yyyy-MM-dd")
+                            .add_jm()
+                            .format(
+                                DateTime.parse(element.timestamp.toString()))
+                            .toString(),
+                        //maxLines: 5,
                       ),
                     ),
-
-                    DataCell(
-                      Container(
-                        child: Text(
-                          element.result.toString(),
-                        ),
+                  ),
+                  DataCell(
+                    Container(
+                      child: Text(
+                        element.result.toString(),
                       ),
                     ),
-                  ]),
-                )
-                .toList(),
-          ),
-        ),)
-
-      ;
-  //  );
+                  ),
+                ]),
+              )
+              .toList(),
+        ),
+      ),
+    );
+    //  );
     //,
     // );
   }
@@ -276,7 +265,7 @@ class _KhojTheSearchState extends State<KhojTheSearch> {
 
     var s = dataListAsInt.contains(value);
     if (s) {
-      // print('True');
+      print('True');
       // print(dataListAsInt.join(','));
 
       await DBHelper().storeData(
@@ -302,7 +291,6 @@ class _KhojTheSearchState extends State<KhojTheSearch> {
           id: int.parse(widget.userId),
           timestamp: DateTime.now().toString(),
           searchByValue: searchValue.toString(),
-
           storeValue: dataListAsInt.join(',').toString(),
           result: "False",
         ),

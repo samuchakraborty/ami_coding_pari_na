@@ -118,7 +118,7 @@ class DBHelper {
 
 
 
-  Future save(User user) async {
+  Future signUpUser(User user) async {
     var dbClient = await db;
     int id = await dbClient.insert(USER_TABLE, user.toUser());
     print(id);
@@ -141,7 +141,7 @@ class DBHelper {
     // });
   }
 
-  Future<List<User>> getEmployees() async {
+  Future<List<User>> getAllUser() async {
     var dbClient = await db;
     List<Map<String, dynamic>> mapss = await dbClient.query(USER_TABLE,
         columns: [ID, USER_NAME, USER_PASSWORD, USER_MOBILE]);

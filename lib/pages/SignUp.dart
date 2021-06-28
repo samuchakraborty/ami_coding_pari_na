@@ -142,7 +142,7 @@ class _SignUpState extends State<SignUp> {
                     onPressed: () async {
                       if (_formKey.currentState!.validate()) {
                         await DBHelper()
-                            .save(User(
+                            .signUpUser(User(
                                 userName: userName,
                                 mobile: (mobile),
                                 password: password))
