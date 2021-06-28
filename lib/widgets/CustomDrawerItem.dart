@@ -32,7 +32,7 @@ class CustomDrawerItem extends StatelessWidget {
             Text(
               labelText,
               style: TextStyle(
-                  fontFamily: 'Poppins',
+
                   fontSize: 20,
                   fontWeight: FontWeight.w500),
             ),
