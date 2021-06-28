@@ -8,7 +8,8 @@ You're sections headers will be used to reference location of destination.
 
   - [Description](#description)
   - [How To Use](#how-to-use)
-  - [DataBase](#dataBase)
+  - [Demo](#demo)
+  - [DataBase](#database)
   - [Khoj Function](#khoj-function)
   - [Dekhao Chobi](#dekhao-chobi)
   - [Project Images](#project-images)
@@ -22,10 +23,96 @@ Authentication is simple; just type userName, mobile & password. It's store in s
 
 ## How To Use
 
-Clone this project and Run this command 'Flutter run'.
-Or use this apk [ami_coding_pari_na.zip](https://github.com/samuchakraborty/ami_coding_pari_na/files/6724694/ami_coding_pari_na.zip)
+Clone this project and Run this command 'flutter run'.
+Or use this apk [ami_coding_pari_na.zip]([ami_coding_pari_na.zip](https://github.com/samuchakraborty/ami_coding_pari_na/files/6726784/ami_coding_pari_na.zip)
+)
+
+## Demo
+
+
+
+https://user-images.githubusercontent.com/61682653/123649299-7874cf00-d84b-11eb-8542-7204482317d1.mp4
+
+
+
+
 
 ## DataBase
+
+- User Model
+```
+class User {
+  int? id;
+  String? mobile;
+  String? userName;
+  String? password;
+
+  User({this.id, this.mobile, this.password, this.userName});
+
+  Map<String, dynamic> toUser() {
+    var map = <String, dynamic>{
+      'id': id,
+      'mobile': mobile,
+      'username': userName,
+      'password': password
+    };
+
+    return map;
+  }
+
+  User.fromMap(Map<String, dynamic> map) {
+    id = map['id'];
+    mobile = map['mobile'];
+    userName = map['userName'];
+    password = map['password'];
+  }
+}
+```
+
+- Store Data Model
+```
+class StoreData {
+  int? id;
+  String? storeValue;
+  String? searchByValue;
+  String? timestamp;
+  String? result;
+
+  StoreData(
+      {this.id,
+      this.storeValue,
+      this.searchByValue,
+      this.timestamp,
+      this.result});
+
+  Map<String, dynamic> toStore() {
+    var map = <String, dynamic>{
+      'id': id,
+      'timestamp': timestamp,
+      'storeValue': storeValue,
+      'searchByValue': searchByValue,
+      'result': result
+    };
+
+    return map;
+  }
+
+  StoreData.fromMap(Map<String, dynamic> map) {
+    id = map['id'];
+    timestamp = map['timestamp'];
+    storeValue = map['storeValue'];
+    searchByValue = map['searchByValue'];
+    result = map['result'];
+  }
+}
+
+
+
+
+```
+
+
+
  - Create DataBase 
 ```
  late Database _db;
